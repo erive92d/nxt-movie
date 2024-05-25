@@ -9,10 +9,10 @@ export default function Navigation() {
             href: "/movies"
         }, {
             name: "TV shows",
-            href:"/tv"
-        },  {
+            href: "/tv"
+        }, {
             name: "Watchlist",
-            href:"/watchlist"
+            href: "/watchlist"
         }
     ]
 
@@ -22,34 +22,34 @@ export default function Navigation() {
             href: "/search"
         }, {
             name: "Create Account",
-            href:"/register"
+            href: "/register"
         }, {
             name: "Sign in",
-            href:"/signin"
+            href: "/signin"
         }
     ]
 
-  return (
-    <div className='bg-zinc-900 flex justify-between px-10 py-6 font-bold '>
+    return (
+        <div className='bg-zinc-900 flex justify-between px-10 py-6 font-bold '>
             <ul className='flex gap-6 items-center'>
-                <h1 className='text-xl text-yellow-500'>Nxtmovies</h1>
+                <Link href="/" className='text-xl text-yellow-500 '>Nxtmovies</Link>
                 {navLinksFirst.map((nav, index) => (
-                    <li key={index}>
+                    <li className='p-2 hover:bg-zinc-500 rounded-lg' key={index}>
                         <Link href={nav.href}>
                             {nav.name}
                         </Link>
                     </li>
                 ))}
             </ul>
-            <ul className='flex gap-6'>
+            <ul className='flex gap-6 items-center'>
                 {navLinksSecond.map((nav, index) => (
-                    <li key={index}>
-                        <Link className={`${nav.name === "Create Account" ? "bg-yellow-500 p-1 rounded-lg text-zinc-100": ""}`} href={nav.href}>
+                    <li className='' key={index}>
+                        <Link className={`${nav.name === "Create Account" ? "bg-yellow-500 p-1 rounded-lg text-zinc-100" : ""}`} href={nav.href}>
                             {nav.name}
                         </Link>
                     </li>
                 ))}
             </ul>
-    </div>
-  )
+        </div>
+    )
 }
