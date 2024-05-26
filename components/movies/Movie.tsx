@@ -1,5 +1,10 @@
 import React from 'react'
 import BackgroundImage from '../BackgroundImage'
+import { SingleMovie } from '@/utils/GlobalProps'
+import Badge from '../Badge'
+import Button from '../Button'
+import Image from 'next/image'
+
 
 export default async function Movie({ id }: { id: string }) {
 
@@ -10,11 +15,34 @@ export default async function Movie({ id }: { id: string }) {
         throw new Error("Error")
     }
 
-    const movie = await search.json()
+    const movie: SingleMovie = await search.json()
+
+    console.log(movie)
+
+
     return (
         <BackgroundImage src={movie.poster_path}>
-            <div className='min-h-80'>
-                {movie.original_title}
+            <div className='min-h-screen text-white gap-6 flex flex-col justify-center'>
+                <div className="space-x-2">
+                    <Badge value={!movie.adult ? "Not rated" : "Rated-R"} />
+                    <Badge value={movie.original_language} />
+                    <Badge value={movie.runtime} />
+                </div>
+                <h1 className='text-5xl font-bold '>
+                    {movie.original_title}
+                </h1>
+                <div>
+                    <Button value="Add to Watchlist" />
+                </div>
+                <p className=''>
+                    {movie.overview}
+                </p>
+                <div className='space-x-2'>
+                    {movie.genres.map(gen =>
+                        <span className='text-sm font-thin'>
+                            {gen.name}
+                        </span>)}
+                </div>
             </div>
         </BackgroundImage>
     )

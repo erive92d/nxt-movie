@@ -3,8 +3,8 @@ import BackgroundImage from "../BackgroundImage";
 import Link from "next/link";
 import Button from "../Button";
 
-type Hero = {
-  movie: MovieProps
+type HeroProps = {
+  results: MovieProps[]
 }
 
 export default async function Hero() {
@@ -16,11 +16,12 @@ export default async function Hero() {
     throw new Error("Failed to fetch movies")
   }
 
-  const movie: MovieProps = await data.json()
-  const currentMovie = movie.results[3]
-  console.log(currentMovie)
+  const { results }: HeroProps = await data.json()
+
+  const currentMovie = results[4]
 
   return (
+
     <BackgroundImage src={currentMovie.backdrop_path}>
       <div className="min-h-screen flex flex-col justify-center px-12">
         <h1 className="text-white text-4xl font-bold">{currentMovie.original_title}</h1>
