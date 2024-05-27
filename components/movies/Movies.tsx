@@ -1,21 +1,17 @@
 import { MovieProps } from '@/utils/GlobalProps'
-import React, { Suspense } from 'react'
-import CarouselComp from '../CarouselComp'
+import CarouselComp from '../helpers/CarouselComp'
+import { fetchAllMovies } from '@/api-calls/api-movies'
+import { delay } from '@/utils/delay'
 
 type AllMoviesProps = {
     results: MovieProps[]
 }
 
-export default async function Movies() {
+export default async function Movies({ movieList }: { movieList: string }) {
 
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    const data = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.MOVIE_API}`,
-    )
-    if (!data.ok) {
-        throw new Error("Error")
-    }
+    await delay(1000)
 
-    const { results }: AllMoviesProps = await data.json()
+    const { results }: AllMoviesProps = await fetchAllMovies("movie", movieList, 1)
 
     return (
         <div className=''>

@@ -1,18 +1,22 @@
 import Link from 'next/link'
 import React from 'react'
+import NavigationLink from './NavigationLink'
+import { fetchCategories } from '@/api-calls/api-movies'
+import { movieListLinks, tvListLinks } from '@/lib/NavLinksMovieTV'
 
-export default function Navigation() {
+export default async function Navigation() {
+
+    const movieGenres = await fetchCategories("movie")
+    const tvGenres = await fetchCategories("tv")
 
     const navLinksFirst = [
         {
             name: "Movies",
-            href: "/movies"
-        }, {
-            name: "TV shows",
-            href: "/tv"
-        }, {
-            name: "Watchlist",
-            href: "/watchlist"
+            children: movieListLinks
+        },
+        {
+            name: "TV",
+            children: tvListLinks
         }
     ]
 
@@ -34,11 +38,7 @@ export default function Navigation() {
             <ul className='flex gap-6 items-center'>
                 <Link href="/" className='text-xl text-yellow-500 '>Nxtmovies</Link>
                 {navLinksFirst.map((nav, index) => (
-                    <li className='p-2 hover:bg-zinc-500 rounded-lg' key={index}>
-                        <Link href={nav.href}>
-                            {nav.name}
-                        </Link>
-                    </li>
+                    <NavigationLink links={nav} key={index} />
                 ))}
             </ul>
             <ul className='flex gap-6 items-center'>

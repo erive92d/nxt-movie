@@ -1,24 +1,17 @@
 import React from 'react'
-import BackgroundImage from '../BackgroundImage'
+import BackgroundImage from '../helpers/BackgroundImage'
 import { SingleMovie } from '@/utils/GlobalProps'
-import Badge from '../Badge'
-import Button from '../Button'
-import Image from 'next/image'
+import Badge from '../helpers/Badge'
+import Button from '../helpers/Button'
+import { fetchAMovie } from '@/api-calls/api-movies'
+import { delay } from '@/utils/delay'
 
 
-export default async function Movie({ id }: { id: string }) {
+export default async function Movie({ id }: { id: number }) {
 
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    const search = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.MOVIE_API}`)
+    await delay(1000)
 
-    if (!search.ok) {
-        throw new Error("Error")
-    }
-
-    const movie: SingleMovie = await search.json()
-
-    console.log(movie)
-
+    const movie: SingleMovie = await fetchAMovie(id)
 
     return (
         <BackgroundImage src={movie.poster_path}>

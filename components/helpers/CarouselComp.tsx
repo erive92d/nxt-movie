@@ -18,7 +18,7 @@ export default function CarouselComp({ movies }: { movies: MovieProps[] }) {
         <Carousel>
             <CarouselContent>
                 {movies?.map((movie, index) => (
-                    <CarouselItem key={index} className="basis-1/5 hover:shadow-2xl hover:scale-110 duration-200 hover:shadow-yellow-500">
+                    <CarouselItem key={index} className=" basis-1/5 hover:shadow-2xl hover:scale-110 duration-200 hover:shadow-yellow-500">
                         <Link href={`/movies/${movie.id}`}>
                             <Image alt="movie_image" height={500} width={300} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                         </Link>
