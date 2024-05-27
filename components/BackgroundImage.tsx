@@ -20,7 +20,7 @@ export default function BackgroundImage({ children, src }: BackgroundProps) {
                     opacity: 0.9,
                 }}
             />
-            <div className="relative z-10 px-14">
+            <div className="relative z-10">
                 {children}
             </div>
         </div>

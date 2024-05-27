@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} text-zinc-400`}>
+      <body className={`${inter.className} bg-black text-zinc-400`}>
         <Navigation />
         {children}
         <Footer />

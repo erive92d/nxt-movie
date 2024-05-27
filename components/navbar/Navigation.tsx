@@ -44,7 +44,7 @@ export default function Navigation() {
             <ul className='flex gap-6 items-center'>
                 {navLinksSecond.map((nav, index) => (
                     <li className='' key={index}>
-                        <Link className={`${nav.name === "Create Account" ? "bg-yellow-500 p-1 rounded-lg text-zinc-100" : ""}`} href={nav.href}>
+                        <Link className={`${nav.name === "Create Account" ? "bg-yellow-500 p-2 rounded-lg text-zinc-100" : ""}`} href={nav.href}>
                             {nav.name}
                         </Link>
                     </li>

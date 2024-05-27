@@ -22,7 +22,7 @@ export default async function Movie({ id }: { id: string }) {
 
     return (
         <BackgroundImage src={movie.poster_path}>
-            <div className='min-h-screen text-white gap-6 flex flex-col justify-center'>
+            <div className='min-h-screen text-white gap-6 px-16 flex flex-col justify-center'>
                 <div className="space-x-2">
                     <Badge value={!movie.adult ? "Not rated" : "Rated-R"} />
                     <Badge value={movie.original_language} />
