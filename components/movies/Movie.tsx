@@ -39,7 +39,7 @@ export default async function Movie({ id }: { id: string }) {
                 </p>
                 <div className='space-x-2'>
                     {movie.genres.map(gen =>
-                        <span className='text-sm font-thin'>
+                        <span key={gen.id} className='text-sm font-thin'>
                             {gen.name}
                         </span>)}
                 </div>
