@@ -1,9 +1,11 @@
 import { fetchAll } from '@/api-calls/api-movies'
 import { AllProps } from '@/utils/GlobalProps'
 import { delay } from '@/utils/delay'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
-export default async function MovieList({ list }: { list: string }) {
+export default async function ListDisplay({ list }: { list: string }) {
 
     await delay(1000)
 
@@ -20,13 +22,12 @@ export default async function MovieList({ list }: { list: string }) {
     }
 
     const { results: movies }: { results: AllProps[] } = await fetchAll(type, list, 1)
-
     return (
-        <div>
+        <div className='justify-end flex flex-wrap gap-2 '>
             {movies?.map((movie, index) => (
-                <div key={index}>
-                    {isMovie ? movie.original_title : movie.original_name}
-                </div>
+                <Link href={`${isMovie ? `/movies/${movie.id}` : `/tv/${movie.id}`}`} className='hover:shadow-2xl hover:scale-110 duration-200 hover:shadow-yellow-500' key={index}>
+                    <Image alt="movie_image" height={450} width={250} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
+                </Link>
             ))}
         </div>
     )

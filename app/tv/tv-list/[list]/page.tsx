@@ -1,6 +1,7 @@
-import MovieList from "@/components/movies/MovieList"
+import ListDisplay from "@/components/movies/ListDisplay"
 import SideMenu from "@/components/movies/SideMenu"
 import { movieListLinks } from "@/lib/NavLinksMovieTV"
+import { Loader } from "lucide-react"
 import { Suspense } from "react"
 
 export async function generateStaticParams() {
@@ -14,10 +15,10 @@ export default async function page({ params }: { params: { list: string } }) {
 
 
     return (
-        <div className='min-h-screen flex justify-between'>
-            <SideMenu />
-            <Suspense fallback={"loading..."}>
-                <MovieList list={list} />
+        <div className='min-h-screen flex w-3/4 mx-auto'>
+          <SideMenu />
+            <Suspense fallback={<Loader/>}>
+                <ListDisplay list={list} />
             </Suspense>
         </div>
     )

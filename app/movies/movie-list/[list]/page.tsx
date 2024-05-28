@@ -1,4 +1,5 @@
-import MovieList from '@/components/movies/MovieList'
+import Loading from '@/components/helpers/Loading'
+import ListDisplay from '@/components/movies/ListDisplay'
 import SideMenu from '@/components/movies/SideMenu'
 import { movieListLinks } from '@/lib/NavLinksMovieTV'
 import React, { Suspense } from 'react'
@@ -14,10 +15,10 @@ export default async function page({ params }: { params: { list: string } }) {
   const { list } = params
 
   return (
-    <div className='min-h-screen flex justify-between'>
+    <div className='relative lg:w-3/4 mx-auto flex'>
       <SideMenu />
-      <Suspense fallback={"loading..."}>
-        <MovieList list={list} />
+      <Suspense fallback={<Loading/>}>
+        <ListDisplay list={list} />
       </Suspense>
     </div>
   )
