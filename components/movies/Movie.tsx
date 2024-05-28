@@ -3,7 +3,7 @@ import BackgroundImage from '../helpers/BackgroundImage'
 import { SingleMovie } from '@/utils/GlobalProps'
 import Badge from '../helpers/Badge'
 import Button from '../helpers/Button'
-import { fetchAMovie } from '@/api-calls/api-movies'
+import { fetchById } from '@/api-calls/api-movies'
 import { delay } from '@/utils/delay'
 
 
@@ -11,7 +11,9 @@ export default async function Movie({ id }: { id: number }) {
 
     await delay(1000)
 
-    const movie: SingleMovie = await fetchAMovie(id)
+    const movie: SingleMovie = await fetchById(id)
+
+    console.log(movie)
 
     return (
         <BackgroundImage src={movie.poster_path}>
@@ -19,7 +21,11 @@ export default async function Movie({ id }: { id: number }) {
                 <div className="space-x-2">
                     <Badge value={!movie.adult ? "Not rated" : "Rated-R"} />
                     <Badge value={movie.original_language} />
-                    <Badge value={movie.runtime} />
+                    {movie.runtime ? 
+                  <Badge value={movie.runtime} />
+                        :
+                    null
+                }
                 </div>
                 <h1 className='text-5xl font-bold '>
                     {movie.original_title}

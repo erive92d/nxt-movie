@@ -25,7 +25,7 @@ export default async function ListDisplay({ list }: { list: string }) {
     return (
         <div className='justify-end flex flex-wrap gap-2 '>
             {movies?.map((movie, index) => (
-                <Link href={`${isMovie ? `/movies/${movie.id}` : `/tv/${movie.id}`}`} className='hover:shadow-2xl hover:scale-110 duration-200 hover:shadow-yellow-500' key={index}>
+                <Link href={`${isMovie ? `/movies/${movie.id}` : `/tv/${movie.id}tv`}`} className='hover:shadow-2xl hover:scale-110 duration-200 hover:shadow-yellow-500' key={index}>
                     <Image alt="movie_image" height={450} width={250} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />
                 </Link>
             ))}

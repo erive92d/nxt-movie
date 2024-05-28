@@ -12,10 +12,17 @@ export const fetchAll = async (type: string, movieList: string, page: number) =>
     }
 }
 
-export const fetchAMovie = async (id: number) => {
-    try {
-        const search = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.MOVIE_API}`)
+export const fetchById = async (id: number) => {
+    let type:string
+ 
+    if(id.toString().includes("tv")) {
+        type = "tv"
+    } else {
+        type = "movie"
+    }
 
+    try {
+        const search = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${process.env.MOVIE_API}`)
         if (!search.ok) {
             throw new Error("Error")
         }
