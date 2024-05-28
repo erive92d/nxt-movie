@@ -1,7 +1,7 @@
 import { MovieProps } from "@/utils/GlobalProps";
 import BackgroundImage from "../helpers/BackgroundImage";
 import Button from "../helpers/Button";
-import { fetchAllMovies } from "@/api-calls/api-movies";
+import { fetchAll } from "@/api-calls/api-movies";
 
 type HeroProps = {
   results: MovieProps[]
@@ -10,9 +10,9 @@ type HeroProps = {
 export default async function Hero() {
 
 
-  const { results }: HeroProps = await fetchAllMovies("movie", "popular", 1)
+  const { results }: HeroProps = await fetchAll("movie", "popular", 1)
 
-  const currentMovie = results[1]
+  const currentMovie = results[0]
 
   return (
     <BackgroundImage src={currentMovie.backdrop_path}>

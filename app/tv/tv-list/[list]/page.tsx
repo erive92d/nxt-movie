@@ -1,5 +1,7 @@
+import MovieList from "@/components/movies/MovieList"
 import SideMenu from "@/components/movies/SideMenu"
 import { movieListLinks } from "@/lib/NavLinksMovieTV"
+import { Suspense } from "react"
 
 export async function generateStaticParams() {
 
@@ -14,9 +16,9 @@ export default async function page({ params }: { params: { list: string } }) {
     return (
         <div className='min-h-screen flex justify-between'>
             <SideMenu />
-            {/* <Suspense fallback={"loading..."}>
+            <Suspense fallback={"loading..."}>
                 <MovieList list={list} />
-            </Suspense> */}
+            </Suspense>
         </div>
     )
 }

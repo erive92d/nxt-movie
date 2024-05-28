@@ -1,4 +1,5 @@
-export const fetchAllMovies = async (type: string, movieList: string, page: number) => {
+export const fetchAll = async (type: string, movieList: string, page: number) => {
+
     try {
         const data = await fetch(`https://api.themoviedb.org/3/${type}/${movieList}?api_key=${process.env.MOVIE_API}&page=${page}`,
         )

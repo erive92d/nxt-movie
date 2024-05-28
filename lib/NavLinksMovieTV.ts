@@ -20,18 +20,18 @@ export const movieListLinks = [
 export const tvListLinks = [
     {
         name: "Airing Today",
-        href: "airing_today"
+        href: "airing_todaytv"
     },
     {
         name: "On The Air",
-        href: "on_the_air"
+        href: "on_the_airtv"
     },
     {
         name: "Popular Tv",
-        href: "popular"
+        href: "populartv"
     },
     {
         name: "Top Rated Tv",
-        href: "top_rated"
+        href: "top_ratedtv"
     }
 ]

@@ -36,3 +36,9 @@ export interface SingleMovie extends MovieProps {
     }
     runtime: number
 }
+
+export interface AllProps extends MovieProps {
+    original_name: string
+    name: string
+    first_air_date: string
+}

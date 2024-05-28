@@ -1,4 +1,4 @@
-import { fetchAllMovies } from '@/api-calls/api-movies';
+import { fetchAll } from '@/api-calls/api-movies';
 import Loading from '@/components/helpers/Loading'
 import Movie from '@/components/movies/Movie'
 import { MovieProps } from '@/utils/GlobalProps';
@@ -7,7 +7,7 @@ import React, { Suspense } from 'react'
 
 export async function generateStaticParams() {
 
-    const { results: movies }: { results: MovieProps[] } = await fetchAllMovies("movie", "popular", 1)
+    const { results: movies }: { results: MovieProps[] } = await fetchAll("movie", "popular", 1)
 
     return movies?.map(movie => ({
         id: movie.id.toString(),
