@@ -23,7 +23,7 @@ export default async function ListDisplay({ list }: { list: string }) {
 
     const { results: movies }: { results: AllProps[] } = await fetchAll(type, list, 1)
     return (
-        <div className='justify-end flex flex-wrap gap-2 '>
+        <div className='justify-end flex flex-wrap gap-2 py-12'>
             {movies?.map((movie, index) => (
                 <Link href={`${isMovie ? `/movies/${movie.id}` : `/tv/${movie.id}tv`}`} className='hover:shadow-2xl hover:scale-110 duration-200 hover:shadow-yellow-500' key={index}>
                     <Image alt="movie_image" height={450} width={250} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} />

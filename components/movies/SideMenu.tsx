@@ -22,16 +22,16 @@ export default function SideMenu() {
             return tvListLinks;
         }
     }, [pathname]);
-  
+
     const currentLink = links.find(link => pathname.includes(link.href))
-  
+
 
     return (
-        <div className='fixed left-32  top-32 min-w-40'>
+        <div className='fixed left-32 top-32 min-w-40'>
             <h1 className='text-2xl text-white font-bold mb-4'>{currentLink?.name}</h1>
-            <ul className='bg-zinc-700 border'>
+            <ul className='bg-zinc-700 border rounded-lg'>
                 {links?.map((link, index) => (
-                    <li className={`bg-zinc-700 ${pathname.includes(link.href) ? "font-bold text-yellow-500": ""} mb-2  p-2 text-xl `} key={index}>
+                    <li className={` ${pathname.includes(link.href) ? "font-bold text-yellow-500" : ""} mb-2  p-2 text-xl `} key={index}>
                         <Link href={link.href}>
                             {link.name}
                         </Link>
