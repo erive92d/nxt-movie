@@ -37,6 +37,13 @@ export interface SingleMovie extends MovieProps {
     runtime: number
 }
 
+export interface SingleTv extends MovieProps {
+    name: string
+    next_episode_to_air: string
+    number_of_episodes: number
+    number_of_seasons: 1
+}
+
 export interface AllProps extends MovieProps {
     original_name: string
     name: string

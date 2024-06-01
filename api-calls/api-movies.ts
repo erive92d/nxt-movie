@@ -1,3 +1,5 @@
+import { SingleMovie, SingleTv } from "@/utils/GlobalProps"
+
 export const fetchAll = async (type: string, movieList: string, page: number) => {
 
     try {
@@ -13,9 +15,9 @@ export const fetchAll = async (type: string, movieList: string, page: number) =>
 }
 
 export const fetchById = async (id: number) => {
-    let type:string
- 
-    if(id.toString().includes("tv")) {
+    let type: string
+
+    if (id.toString().includes("tv")) {
         type = "tv"
     } else {
         type = "movie"

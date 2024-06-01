@@ -22,6 +22,7 @@ export default async function ListDisplay({ list }: { list: string }) {
     }
 
     const { results: movies }: { results: AllProps[] } = await fetchAll(type, list, 1)
+
     return (
         <div className='justify-end flex flex-wrap gap-2 py-12'>
             {movies?.map((movie, index) => (
