@@ -1,4 +1,5 @@
 import ListDisplay from "@/components/movies/ListDisplay"
+import MovieFilter from "@/components/movies/MovieFilter"
 import SideMenu from "@/components/movies/SideMenu"
 import { movieListLinks } from "@/lib/NavLinksMovieTV"
 import { Loader } from "lucide-react"
@@ -16,10 +17,7 @@ export default async function page({ params }: { params: { list: string } }) {
 
     return (
         <div className='min-h-screen flex w-3/4 mx-auto'>
-          <SideMenu />
-            <Suspense fallback={<Loader/>}>
-                <ListDisplay list={list} />
-            </Suspense>
+            <MovieFilter list={list} />
         </div>
     )
 }

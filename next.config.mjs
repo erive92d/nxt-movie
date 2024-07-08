@@ -8,7 +8,10 @@ const nextConfig = {
                 port: '',
             },
         ]
-    }
+    },
+    env: {
+        MOVIE_API: process.env.MOVIE_API,
+    },
 };
 
 export default nextConfig;

@@ -10,7 +10,7 @@ type HeroProps = {
 export default async function Hero() {
 
 
-  const { results }: HeroProps = await fetchAll("movie", "popular", 1)
+  const { results }: HeroProps = await fetchAll("popular", 1)
 
   const currentMovie = results[0]
 

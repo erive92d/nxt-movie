@@ -1,13 +1,25 @@
-import { SingleMovie, SingleTv } from "@/utils/GlobalProps"
+import { isMovieType, isTvType } from "@/lib/typeCheckers"
 
-export const fetchAll = async (type: string, movieList: string, page: number) => {
+export const fetchAll = async (list: string, page: number) => {
+    //HINT: MOVIES have dates provided, tv does not
+
+
+    let type: string
+    if (isTvType(list)) {
+        type = "tv"
+        list.replace("tv", "")
+    } else {
+        type = "movie"
+    }
 
     try {
-        const data = await fetch(`https://api.themoviedb.org/3/${type}/${movieList}?api_key=${process.env.MOVIE_API}&page=${page}`,
+        const data = await fetch(`https://api.themoviedb.org/3/${type}/${type === "tv" ? list.replace("tv", "") : list}?api_key=${process.env.MOVIE_API}&page=${page}`,
         )
         if (!data.ok) {
             throw new Error("Failed to fetch movies")
         }
+
+
         return await data.json()
     } catch (error) {
         throw new Error("Api call error")

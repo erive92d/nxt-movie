@@ -21,7 +21,8 @@ export default async function ListDisplay({ list }: { list: string }) {
         type = "movie"
     }
 
-    const { results: movies }: { results: AllProps[] } = await fetchAll(type, list, 1)
+    const { results: movies }: { results: AllProps[] } = await fetchAll(list, 1)
+
 
     return (
         <div className='justify-end flex flex-wrap gap-2 py-12'>

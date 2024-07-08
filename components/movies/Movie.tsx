@@ -10,7 +10,6 @@ import { delay } from '@/utils/delay'
 export default async function Movie({ id }: { id: number }) {
 
     await delay(1000)
-
     const movie = await fetchById(id)
 
     return (
