@@ -1,8 +1,9 @@
 import { isMovieType, isTvType } from "@/lib/typeCheckers"
 
+
 export const fetchAll = async (list: string, page: number) => {
     //HINT: MOVIES have dates provided, tv does not
-
+    console.log(list)
 
     let type: string
     if (isTvType(list)) {

@@ -16,7 +16,6 @@ export default async function page({ params }: { params: { list: string } }) {
 
   const { list } = params
 
-
   return (
     <div className='relative lg:w-3/4 mx-auto flex'>
       <MovieFilter list={list} />

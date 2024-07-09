@@ -1,13 +1,11 @@
 "use client"
 
 import { fetchAll } from "@/api-calls/api-movies"
-import page from "@/app/page"
 import { AllProps } from "@/utils/GlobalProps"
 import { useCallback, useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { delay } from "@/utils/delay"
 import Link from "next/link"
-import { isMovieType, isTvType } from "@/lib/typeCheckers"
 
 
 export default function MovieFilter({ list }: { list: string }) {
@@ -15,7 +13,6 @@ export default function MovieFilter({ list }: { list: string }) {
     const [data, setData] = useState<AllProps[]>([])
     const [loading, setLoading] = useState<boolean>(false)
     const [page, setPage] = useState<number>(0)
-
     const [hasMore, setHasMore] = useState(true);
     const observerRef = useRef<IntersectionObserver | null>(null);
     const loadMoreRef = useRef<HTMLDivElement>(null);

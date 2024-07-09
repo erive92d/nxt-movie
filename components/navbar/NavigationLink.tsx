@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/navigation-menu"
 
 import Link from "next/link"
+import LinkButton from "../LinkButton"
 
 type NavLinks = {
     links: {
@@ -36,14 +37,15 @@ export default function NavigationLink({ links, key }: NavLinks) {
                         <ul className="grid  w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                             {links.children.map((child, index) => (
                                 <li key={index}>
-                                    <Link href={
+                                    <LinkButton value={child.name} type={links.name.toLocaleLowerCase()} target={child.href} />
+                                    {/* <Link href={
                                         links.name === "Movies" ?
                                             `/movies/movie-list/${child.href}`
                                             :
                                             `/tv/tv-list/${child.href}`
                                     } legacyBehavior passHref>
                                         {child.name}
-                                    </Link>
+                                    </Link> */}
                                 </li>
                             ))}
                         </ul>
